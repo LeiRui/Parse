@@ -2,8 +2,8 @@ import java.io.*;
 
 public class Parse {
     public static void main(String[] args) throws IOException{
-        String sqlFile = "D:\\files\\sqls.txt";
-        String sqlOut = "D:\\files\\sqlsOut.txt";
+        String sqlFile = "/home/giant/cat/sqls.txt";
+        String sqlOut = "/home/giant/cat/sqlOut0503.txt";
         PrintWriter pw = null;
         BufferedReader sqlFilebr=null;
         BufferedReader sqlOutbr=null;
