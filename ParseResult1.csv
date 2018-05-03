@@ -1,2 +1,2 @@
-sql,Key,Merged,Read,Request complete
-select * from dm1 where pkey=1 and ck1=1 and ck2>=1 and ck2<=2 and ck3=1 allow filtering;,5309,9673,9911,10276
+sql,CN:Sending,CN:REQUEST_RESPONSE,DN:Key,DN:Merged,DN:Read,DN:Enqueuing,DN:Sending,CN:Request complete
+select * from dm1 where pkey=1 and ck1=1 and ck2>=1 and ck2<=2 and ck3=1 allow filtering;,471,1615,168,728,751,762,803,1764
