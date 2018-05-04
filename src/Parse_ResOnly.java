@@ -1,9 +1,9 @@
 import java.io.*;
 
-public class Parse {
+public class Parse_ResOnly {
     public static void main(String[] args) throws IOException{
-        String sqlFile = "/home/giant/cat/sqls2.txt";
-        String sqlOut = "/home/giant/cat/sqls2Out2.txt";
+        String sqlFile = "/home/giant/cat/sqls3.txt";
+        String sqlOut = "/home/giant/cat/sqls3Out.txt";
         PrintWriter pw = null;
         BufferedReader sqlFilebr=null;
         BufferedReader sqlOutbr=null;
@@ -11,12 +11,12 @@ public class Parse {
 
             sqlFilebr = new BufferedReader(new FileReader(sqlFile));
             sqlOutbr = new BufferedReader(new FileReader(sqlOut));
-            pw = new PrintWriter(new FileOutputStream("ParseResult2.csv"));
+            pw = new PrintWriter(new FileOutputStream("ParseResult3_2.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        pw.write("sql,CN:Sending,CN:REQUEST_RESPONSE,DN:Key,DN:Merged,DN:Read,DN:Enqueuing,DN:Sending,CN:Request complete\n");
+        pw.write("sql,CN:Request complete\n");
 
         String line;
         //boolean inSession = false;
@@ -36,16 +36,16 @@ public class Parse {
                 //TODO 可以加一个过滤环节 过滤read repair以及key cache miss
             }
 
-            else if(line.contains("Sending READ message to")
-                    ||line.contains("REQUEST_RESPONSE message received from")
-                    ||line.contains("Key cache hit")
-                    ||line.contains("Merged data from")
-                    ||line.contains("tombstone cells") // Read 200 live and 0 tombstone cells
-                    ||line.contains("Enqueuing")
-                    ||line.contains("Sending REQUEST_RESPONSE message to")){
-                String[] split = line.split("\\|");
-                pw.write(split[3]+",");
-            }
+//            else if(line.contains("Sending READ message to")
+//                    ||line.contains("REQUEST_RESPONSE message received from")
+//                    ||line.contains("Key cache hit")
+//                    ||line.contains("Merged data from")
+//                    ||line.contains("tombstone cells") // Read 200 live and 0 tombstone cells
+//                    ||line.contains("Enqueuing")
+//                    ||line.contains("Sending REQUEST_RESPONSE message to")){
+//                String[] split = line.split("\\|");
+//                pw.write(split[3]+",");
+//            }
             else if(line.contains("Request complete")) {
                 String[] split = line.split("\\|");
                 pw.write(split[3] + "\n");
